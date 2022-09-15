@@ -29,11 +29,10 @@ function ticTacToe(moves) {
             }
             board[row][col] = playerMove;
 
-            for (let i = 0; i < board.length; i++) {
-                if (hasWon(board, i, playerMove)) {
+                if (hasWon(board, playerMove)) {
                     gameOver = true;
                 }
-            }
+
             playerMove = switchPlayer(playerMove);
         }
     }
@@ -47,12 +46,17 @@ function ticTacToe(moves) {
 
     printBoard(board);
 
-    function hasWon(board, index, player) {
-        if (board[index][0] === player && board[index][1] === player && board[index][2] === player) {
-            return true;
-        }
-        if (board[0][index] === player && board[1][index] === player && board[2][index] === player) {
-            return true;
+    function hasWon(board, player) {
+
+        let index = 0;
+        while (index < 3) {
+            if (board[index][0] === player && board[index][1] === player && board[index][2] === player) {
+                return true;
+            }
+            if (board[0][index] === player && board[1][index] === player && board[2][index] === player) {
+                return true;
+            }
+            index++;
         }
         if (board[0][0] === player && board[1][1] === player && board[2][2] === player) {
             return true;
