@@ -29,11 +29,8 @@ function ticTacToe(moves) {
             }
             board[row][col] = playerMove;
 
-            if (checkLefDiagonal(board, playerMove) || checkRightDiagonal(board, playerMove)) {
-                gameOver = true;
-            }
             for (let i = 0; i < board.length; i++) {
-                if (checkRow(board, i, playerMove) || checkColumn(board, i, playerMove)) {
+                if (hasWon(board, i, playerMove)) {
                     gameOver = true;
                 }
             }
@@ -50,23 +47,18 @@ function ticTacToe(moves) {
 
     printBoard(board);
 
-
-    function checkRow(board, index, player) {
-        return board[index][0] === player && board[index][1] === player && board[index][2] === player;
-    }
-
-    function checkColumn(board, index, player) {
-        return board[0][index] === player && board[1][index] === player && board[2][index] === player;
-    }
-
-    function checkLefDiagonal(board, player) {
-        return board[0][0] === player && board[1][1] === player && board[2][2] === player;
-    }
-
-    function checkRightDiagonal(board, player) {
+    function hasWon(board, index, player) {
+        if (board[index][0] === player && board[index][1] === player && board[index][2] === player) {
+            return true;
+        }
+        if (board[0][index] === player && board[1][index] === player && board[2][index] === player) {
+            return true;
+        }
+        if (board[0][0] === player && board[1][1] === player && board[2][2] === player) {
+            return true;
+        }
         return board[0][2] === player && board[1][1] === player && board[2][0] === player;
     }
-
 
     function switchPlayer(player) {
         return player === 'X' ? 'O' : 'X';
@@ -74,7 +66,6 @@ function ticTacToe(moves) {
 
     function isValidIndex(row, col, board) {
         return row >= 0 && row <= board.length && col >= 0 && col < board[row].length;
-
     }
 
     function printBoard(board) {
