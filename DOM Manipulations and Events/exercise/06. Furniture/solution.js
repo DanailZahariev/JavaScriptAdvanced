@@ -62,9 +62,10 @@ function solve() {
             let isItemChecked = el.querySelector('input[type=checkbox]:checked');
 
             if (isItemChecked) {
-                let productName = el.querySelector('p').textContent;
-                let productPrice = el.querySelectorAll('p')[1].textContent;
-                let productAvgRefactor = el.querySelectorAll('p')[2].textContent;
+                let productDetails = el.querySelectorAll('p');
+                let productName = productDetails[0].textContent;
+                let productPrice = productDetails[1].textContent;
+                let productAvgRefactor = productDetails[2].textContent;
                 products.push(productName);
                 totalPrice += Number(productPrice);
                 avgDecFactor += Number(productAvgRefactor);
