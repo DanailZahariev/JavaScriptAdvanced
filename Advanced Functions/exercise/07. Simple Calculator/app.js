@@ -13,15 +13,11 @@ function calculator() {
         },
 
         add: () => {
-            let num1 = Number(selector1.value);
-            let num2 = Number(selector2.value);
-            resultSelector.value = num1 + num2;
+            resultSelector.value = Number(selector1.value) + Number(selector2.value);
         },
 
         subtract: () => {
-            let num1 = Number(selector1.value);
-            let num2 = Number(selector2.value);
-            resultSelector.value = num1 - num2;
+            resultSelector.value = Number(selector1.value) - Number(selector2.value);
         }
     };
 }
