@@ -1,5 +1,5 @@
 function add(num) {
-    let sum = 0;
+    let sum = num;
 
     function sumNums(nextSum) {
         sum += nextSum;
@@ -10,7 +10,8 @@ function add(num) {
         return sum;
     };
 
-    return sumNums(num);
+    return sumNums;
 }
 
 console.log(add(1)(6)(-3).toString());
+console.log(add(1).toString());
