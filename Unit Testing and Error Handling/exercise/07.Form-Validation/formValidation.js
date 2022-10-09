@@ -21,14 +21,13 @@ function validate() {
 
         let usernamePattern = /^[A-Za-z0-9]{3,20}$/;
         let passwordPattern = /^\w{5,15}$/;
-        let confirmPasswordPattern = /^\w{5,15}$/;
         let emailPattern = /@(\w)*\./;
         let isValidForm = true;
 
         validateInput(usernameInput, usernamePattern);
         validateInput(userEmail, emailPattern);
         validateInput(userPassword, passwordPattern);
-        validateInput(userConfirmPassword, confirmPasswordPattern);
+        validateInput(userConfirmPassword, passwordPattern);
 
         if (userPassword.value !== userConfirmPassword.value) {
             userPassword.style.borderColor = 'red';
@@ -46,12 +45,7 @@ function validate() {
         }
 
         function validateInput(element, matcher) {
-            if (!matcher.test(element.value)) {
-                element.style.borderColor = 'red';
-                isValidForm = false;
-            } else {
-                element.style.borderColor = '';
-            }
+            return matcher.test(element.value) ? element.style.borderColor = '' : element.style.borderColor = 'red';
         }
 
         if (isValidForm) {
